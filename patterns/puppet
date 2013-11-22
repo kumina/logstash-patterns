@@ -1,0 +1,6 @@
+PUPPETSTAGE Stage\[%{WORD:[puppet][stage]}\]
+PUPPETCLASS %{GREEDYDATA:[puppet][class]}
+PUPPETRESOURCE %{WORD:[puppet][type]}\[%{GREEDYDATA:[puppet][name]}\]
+
+PUPPETCHANGES \(/%{PUPPETSTAGE}/%{PUPPETCLASS}/%{PUPPETRESOURCE}(/%{DATA:[puppet][what_changed]})?\) %{GREEDYDATA:[puppet][changes]}
+PUPPETFINISHED Finished catalog run in %{NUMBER:[puppet][runtime]:float} seconds

@@ -1,0 +1,7 @@
+FAIL2BANTIMESTAMP %{YEAR}-%{MONTHNUM}-%{MONTHDAY} %{TIME},%{NUMBER}
+FAIL2BANLINE fail2ban\.%{WORD:[fail2ban][component]}(?:\.%{WORD:[fail2ban][component_method]})? *: +%{WORD:[fail2ban][severity]} +%{GREEDYDATA:[fail2ban][message]}
+
+FAIL2BANLOGLINE %{FAIL2BANTIMESTAMP:timestamp} %{FAIL2BANLINE}
+
+FAIL2BANACTION \[%{DATA:[fail2ban][jail]}\] %{WORD:[fail2ban][action]} %{IP:[fail2ban][clientip]}
+FAIL2BANACTIONALREADY \[%{DATA:[fail2ban][jail]}\] %{IP:[fail2ban][clientip]} already banned

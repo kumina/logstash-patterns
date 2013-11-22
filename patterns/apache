@@ -1,0 +1,7 @@
+# A pattern for a normal apache combined log, with an optional vhost at the end
+COMBINEDAPACHELOGVHOST %{IPORHOST:[apache][clientip]} %{USER:[apache][ident]} %{USER:[apache][auth]} \[%{HTTPDATE:[apache][timestamp]}\] "(?:%{WORD:[apache][verb]} %{NOTSPACE:[apache][request]}(?: HTTP/%{NUMBER:[apache][httpversion]})?|%{DATA:[apache][rawrequest]})" %{NUMBER:[apache][response]} (?:%{NUMBER:[apache][bytes]:int}|-) %{QS:[apache][referrer]} %{QS:[apache][agent]}( %{IPORHOST:[apache][vhost]})?
+
+# A similar pattern, however, the beginning of the pattern is
+# X-FORWARDED-FOR_IP_ADDRESS (IP_CONNECTING_TO_WEBSERVER) $REST
+# When X-FORWARDED-FOR is empty, it is a dash (-).
+COMBINEDAPACHELOGVHOSTFORWARDED (%{IPORHOST:[apache][clientip]}|-) \(%{IPORHOST:[apache][actualclientip]}\) %{USER:[apache][ident]} %{USER:[apache][auth]} \[%{HTTPDATE:[apache][timestamp]}\] "(?:%{WORD:[apache][verb]} %{NOTSPACE:[apache][request]}(?: HTTP/%{NUMBER:[apache][httpversion]})?|%{DATA:[apache][rawrequest]})" %{NUMBER:[apache][response]} (?:%{NUMBER:[apache][bytes]:int}|-) %{QS:[apache][referrer]} %{QS:[apache][agent]}( %{IPORHOST:[apache][vhost]})?

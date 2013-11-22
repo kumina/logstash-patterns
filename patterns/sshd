@@ -1,0 +1,10 @@
+SSHD_ACCEPTED Accepted %{WORD:[sshd][authmethod]} for %{DATA:[sshd][user]} from %{IPORHOST:[sshd][clientip]} port %{INT:[sshd][clientport]} ssh%{INT:[sshd][protoversion]}(:? : %{WORD:[sshd][keytype]} %{GREEDYDATA:[sshd][pubkey]})?
+SSHD_CLOSED Connection closed by %{IPORHOST:[sshd][clientip]} \[%{DATA:[sshd][phase]}\]
+SSHD_DISCON Received disconnect from %{IPORHOST:[sshd][clientip]}: %{NUMBER:[sshd][reason]}: %{GREEDYDATA:[sshd][message]} (\[%{WORD:[sshd][phase]}\])?
+SSHD_SUBSYS subsystem request for %{WORD:[sshd][subsystem]} by user %{WORD:[sshd][user]}
+SSHD_INVALID_USER Invalid user %{WORD:[sshd][user]} from %{IPORHOST:[sshd][clientip]}
+SSHD_INVALID_USER_AUTH input_userauth_request: invalid user %{WORD:[sshd][user]} \[%{DATA:[sshd][phase]}\]
+SSHD_SOCKET_ERR fatal: Read from socket failed: %{GREEDYDATA:[sshd][reason]} \[%{DATA:[sshd][phase]}\]
+SSHD_INVALID_MAPPING Address %{IP:[sshd][clientip]} maps to %{HOST:[sshd][hostname]}, but this does not map back to the address - POSSIBLE BREAK-IN ATTEMPT!
+SSHD_INVALID_REVERSE_MAPPING reverse mapping checking getaddrinfo for %{HOST:[sshd][hostname]} \[%{IP:[sshd][clientip]}\] failed - POSSIBLE BREAK-IN ATTEMPT!
+SSHD_PAM_SESSION pam_unix\(sshd:session\): session %{WORD:[sshd][session_state]} for user %{WORD:[sshd][user]}(:? by \(%{GREEDYDATA:[sshd][opened_by]\))?

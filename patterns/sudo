@@ -1,0 +1,1 @@
+SUDOLINE \s*%{USER:[sudo][user]} *: *TTY=%{DATA:[sudo][TTY]} *; *PWD=%{DATA:[sudo][PWD]} *; *USER=%{DATA:[sudo][as_user]} *; *COMMAND=%{GREEDYDATA:[sudo][command]}
